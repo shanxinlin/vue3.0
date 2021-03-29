@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="/dist/umd/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data() {
+          return {
+            name: '张三',
+            childObj: {
+              name: 'sxl'
+            }
+          }
+        },
+        computed() {},
+        watch() {}
+      })
+      vm._data.childObj = {
+        name: 'a'
+      }
+      console.log(vm._data)
+
+      // let fn = new Fn({
+      //   el: '#app',
+      //   data() {
+      //     return { name: '张三' }
+      //   }
+      // })
+      // function Fn(options) {
+      //   this.EL = '999'
+      //   console.log(this, options)
+      //   return options
+      // }
+      // console.log(fn)
+    </script>
+  </body>
+</html>
