@@ -4,14 +4,24 @@ import { isObject } from '../util/index'
 
 class Observe {
   constructor(value) {
+    console.log(value)
     // vue如果数据的层次过多，需要递归的去解析对象中的属性，一次增加和set和get方法
-    this.walk(value)
+    if(Array.isArray(value)) {
+      this.observerArray(value);
+    }else {
+      this.walk(value)
+    }
   }
   walk(data) {
     let keys = Object.keys(data);
     keys.forEach((key) => {
       defineReactive(data, key, data[key]);
     })
+  }
+  observerArray(value){
+    for( let i = 0; i< value.length; i++ ){
+      observe(value[i])
+    }
   }
 }
 
@@ -21,7 +31,7 @@ function defineReactive(data, key, value) {
     get(){ // 获取值得时候做一些操作
       return value
     },
-    set(newValue){ //也可以做一些操作
+    set(newValue){ // 也可以做一些操作
       if(newValue === value) return;
       observe(newValue) // 继续劫持用户设置的值，因为有可能用户设置的值是一个对象
       value = newValue;

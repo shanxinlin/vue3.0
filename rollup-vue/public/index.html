@@ -13,20 +13,15 @@
         el: '#app',
         data() {
           return {
-            name: '张三',
-            childObj: {
-              name: 'sxl'
-            }
+            name: [{ a: 1 }, { b: 2 }]
           }
         },
         computed() {},
         watch() {}
       })
-      vm._data.childObj = {
-        name: 'a'
-      }
       console.log(vm._data)
 
+      /***构造函数*/
       // let fn = new Fn({
       //   el: '#app',
       //   data() {
@@ -39,6 +34,22 @@
       //   return options
       // }
       // console.log(fn)
+
+      /**Object.create 创建新对象的__proto__*/
+      // const person = {
+      //   isHuman: false,
+      //   printIntroduction: function () {
+      //     console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`)
+      //   }
+      // }
+      // const me = Object.create(person)
+      // me.name = 'Matthew'
+      // me.isHuman = true
+      // consle.log(me)
+
+      //原型链****/
+      // let me = [1,2]
+      // console.log(me.__proto__,Array.prototype)
     </script>
   </body>
 </html>
